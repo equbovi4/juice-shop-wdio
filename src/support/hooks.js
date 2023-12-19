@@ -1,0 +1,11 @@
+const {Before} = require('@wdio/cucumber-framework');
+const {getHeadless} = require('../../arg.helper');
+
+Before(async (scenario) => {
+    console.log("Before hook");
+    await browser.reloadSession();
+    await browser.maximizeWindow();
+
+    const headless = getHeadless();
+    if (headless) await browser.setWindowSize(1920, 1080);
+})
