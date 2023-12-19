@@ -10,6 +10,10 @@ class User {
         const curTime = new Date().valueOf();
         return `ximik${curTime}@gmail.com`;
     }
+
+    get newPassword() {
+        return `new` + this.password; 
+    }
 }
 
 module.exports = User;
