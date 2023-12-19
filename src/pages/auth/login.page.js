@@ -10,6 +10,18 @@ class LoginPage extends BasePage {
         return browser.$('//h1[text()="Login"]');
     }
 
+    get emailInputField() {
+        return browser.$('//input[@id="email"]');
+    }
+
+    get passwordInputField() {
+        return browser.$('//input[@id="password"]');
+    }
+
+    get loginButton() {
+        return browser.$('//button[@id="loginButton"]');
+    }
+
     //Methods
     async forgotPasswordLink(linkText) {
         return browser.$(`//a[@href="#/${linkText}"]`);
