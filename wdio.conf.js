@@ -252,6 +252,9 @@ exports.config = {
         const ProfilePage = require('./src/pages/profile.page');
         const PaymentPage = require('./src/pages/payment.page');
         const User = require('./src/support/data/user.data');
+        const PaymentData = require('./src/support/data/payment.data');
+        const AddressPage = require('./src/pages/address.page');
+        const AddressData = require('./src/support/data/address.data')
 
         context.basePage = new BasePage();
         context.loginPage = new LoginPage();
@@ -260,6 +263,9 @@ exports.config = {
         context.paymentPage = new PaymentPage();
         context.profilePage = new ProfilePage();
         context.user = new User('ximik003@gmail.com', 'test123!', 'eldest siblings middle name', 'Stas');
+        context.paymentData = new PaymentData('Aleksandrs Jakubovskis', '1234567812345678', '4', '2085');
+        context.addressPage = new AddressPage();
+        context.addressData = new AddressData('United States', 'John Goodman', 1234567891, '00000', 'sunset bv', 'Los Angeles', 'California');
     },
     /**
      *
