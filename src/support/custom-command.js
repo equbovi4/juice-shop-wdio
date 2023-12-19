@@ -38,6 +38,12 @@ class CustomCommand {
             }, this);
         },
         true);
+
+        browser.addCommand("waitAndSelecValue", async function(option) {
+            await this.waitForDisplayed();
+            await this.selectByAttribute('value', option);
+        },
+        true);
     }
 }
 
