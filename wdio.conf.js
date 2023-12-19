@@ -248,18 +248,12 @@ exports.config = {
         const BasePage = require('./src/pages/common/base.page');
         const LoginPage = require('./src/pages/auth/login.page');
         const RegisterPage = require('./src/pages/auth/register.page');
-        const ProfilePage = require('./src/pages/profile.page');
-        const ProductsPage = require('./src/pages/products.page');
-        const BasketPage = require('./src/pages/basket.page');
         const ForgotPassword = require('./src/pages/forgotPassword.page');
         const User = require('./src/support/data/user.data');
 
         context.basePage = new BasePage();
         context.loginPage = new LoginPage();
         context.registerPage = new RegisterPage();
-        context.profilePage = new ProfilePage();
-        context.productsPage = new ProductsPage();
-        context.basketPage = new BasketPage();
         context.forgotPassword = new ForgotPassword();
         context.user = new User('ximik003@gmail.com', 'pppppp', 'eldest siblings middle name', 'Stas');
     },
