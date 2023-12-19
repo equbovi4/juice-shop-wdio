@@ -1,10 +1,10 @@
 const {Then} = require("@wdio/cucumber-framework");
 const User = require('../support/api-helpers/user');
+const SecurityQuestion = require('../support/api-helpers/security-question');
 
 Then('I register a new account', async function() {
     this.user.email = this.user.randomEmail;
 
-    console.log(this.user.email);
     await this.registerPage.emailInputField.waitAndSetValue(this.user.email);
     await this.registerPage.passwordInputField.waitAndSetValue(this.user.password);
     await this.registerPage.passwordInputRepeat.waitAndSetValue(this.user.password);
@@ -15,4 +15,21 @@ Then('I register a new account', async function() {
 
     await this.registerPage.securityAnswerInputField.waitAndSetValue(this.user.secAnswer);
     await this.registerPage.registerButton.waitAndClick();
+})
+
+Then('I have registered a new user using API', async function() {
+    const baseUrl = "http://142.93.235.176:3000";
+
+    const secQuestionApi = new SecurityQuestion(baseUrl);
+    const userApi = new User(baseUrl);
+
+    const securityQuestion = await secQuestionApi.getSecurityQuestionMotherMaiden();
+    const newEmail = this.user.randomEmail;
+    const newPassword = this.user.newPassword;
+
+    console.log(newEmail);
+
+    await userApi.createUser(newEmail, newPassword, securityQuestion);
+    this.user.email = newEmail;
+    this.user.password = newPassword;
 })
