@@ -249,13 +249,17 @@ exports.config = {
         const LoginPage = require('./src/pages/auth/login.page');
         const RegisterPage = require('./src/pages/auth/register.page');
         const ForgotPassword = require('./src/pages/forgotPassword.page');
+        const ProfilePage = require('./src/pages/profile.page');
+        const PaymentPage = require('./src/pages/payment.page');
         const User = require('./src/support/data/user.data');
 
         context.basePage = new BasePage();
         context.loginPage = new LoginPage();
         context.registerPage = new RegisterPage();
         context.forgotPassword = new ForgotPassword();
-        context.user = new User('ximik003@gmail.com', 'pppppp', 'eldest siblings middle name', 'Stas');
+        context.paymentPage = new PaymentPage();
+        context.profilePage = new ProfilePage();
+        context.user = new User('ximik003@gmail.com', 'test123!', 'eldest siblings middle name', 'Stas');
     },
     /**
      *
