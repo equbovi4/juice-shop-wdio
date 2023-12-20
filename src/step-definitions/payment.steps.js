@@ -25,4 +25,7 @@ Then('I have added a payment card', async function(dataTable) {
         await this.paymentPage.submitButton.waitAndClick();
         await this.paymentPage.cardsTable.waitForDisplayed();
     }
+
+    const snackbarElement = await this.paymentPage.confirmationMessage(this.paymentData.cardNumber.slice(-4));
+    await snackbarElement.waitToAppearAndDisappear();
 })

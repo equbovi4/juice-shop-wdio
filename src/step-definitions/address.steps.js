@@ -20,4 +20,6 @@ Then('I have saved address information', async function(dataTable) {
     }
 
     await this.addressPage.submitButton.waitAndClick();
+    const snackbarElement = await this.addressPage.confirmationMessage(this.addressData.city);
+    await snackbarElement.waitToAppearAndDisappear();
 })
