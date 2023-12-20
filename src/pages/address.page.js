@@ -47,9 +47,10 @@ class AddressPage extends BasePage {
         return browser.$('//button[@type="submit"]');
     }
 
-    // get formTitle() {
-    //     return browser.$('button[aria-label="Add a new address"]');
-    // }
+    //Methods
+    async confirmationMessage(city) {
+        return browser.$(`//span[@class ="mat-simple-snack-bar-content"][contains(text(), 'The address at ${city} has been successfully added to your addresses.')]`);
+    }
 }
 
 module.exports = AddressPage;

@@ -35,8 +35,9 @@ class PaymentPage extends BasePage {
         return browser.$('//span[contains(text(), "Submit")]');
     }
 
-    async cardTrailingDigits(lastFourDigits) {
-        return browser.$(`//mat-cell[contains(@class, "mat-column-Number")][contains(text(), '************${lastFourDigits}')]`);
+    //Methods
+    async confirmationMessage(lastFourDigits) {
+        return browser.$(`//span[@class ="mat-simple-snack-bar-content"][contains(text(), 'Your card ending with ${lastFourDigits} has been saved for your convenience.')]`);
     }
 
     async cardHolderName(holderName) {
