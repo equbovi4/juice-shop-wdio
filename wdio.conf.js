@@ -254,7 +254,11 @@ exports.config = {
         const User = require('./src/support/data/user.data');
         const PaymentData = require('./src/support/data/payment.data');
         const AddressPage = require('./src/pages/address.page');
-        const AddressData = require('./src/support/data/address.data')
+        const AddressData = require('./src/support/data/address.data');
+        const SearchPage = require('./src/pages/search.page');
+        const BasketPage = require('./src/pages/basket.page');
+        const CheckoutPage = require('./src/pages/checkout.page');
+        const OrderPage = require('./src/pages/order.page');
 
         context.basePage = new BasePage();
         context.loginPage = new LoginPage();
@@ -266,6 +270,10 @@ exports.config = {
         context.paymentData = new PaymentData('Aleksandrs Jakubovskis', '1234567812345678', '4', '2085');
         context.addressPage = new AddressPage();
         context.addressData = new AddressData('United States', 'John Goodman', 1234567891, '00000', 'sunset bv', 'Los Angeles', 'California');
+        context.searchPage = new SearchPage();
+        context.basketPage = new BasketPage();
+        context.checkoutPage = new CheckoutPage();
+        context.orderPage = new OrderPage();
     },
     /**
      *
