@@ -8,6 +8,18 @@ class AddressData {
         this.city = city,
         this.state = state
     }
+
+    get data() {
+        return [
+            this.country,
+            this.address,
+            this.city,
+            this.state,
+            this.zipcode,
+            this.name,
+            this.mobileNumber
+        ]
+    }
 }
 
 module.exports = AddressData;
