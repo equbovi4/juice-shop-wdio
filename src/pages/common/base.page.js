@@ -40,6 +40,14 @@ class BasePage {
     get savedAddressButton() {
         return browser.$('button[aria-label="Go to saved address page"]');
     }
+
+    get openSearchBar() {
+        return browser.$('//mat-icon[contains(text(), "search")]');
+    }
+
+    get searchInputField() {
+        return browser.$('//input[@type="text"]');
+    }
 }
 
 module.exports = BasePage;
