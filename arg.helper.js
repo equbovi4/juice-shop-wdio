@@ -1,6 +1,7 @@
 const BROWSER_CHROME = "chrome";
 const BROWSER_FIREFOX = "firefox";
 let capabilityHeadless = false;
+let capabilityAllure = false;
 // Default browser will be chrome
 let capabilityBrowser = BROWSER_CHROME;
 
@@ -49,6 +50,11 @@ function setHeadless(headlessArg) {
     else capabilityHeadless = false;
 }
 
+function setAllure(allureArg) {
+    if (allureArg.toLowerCase() === 'true') capabilityAllure = true;
+    else capabilityAllure = false;
+}
+
 function getBrowser() {
     getProcessArg('browser', setBrowser);
     return capabilityBrowser;
@@ -71,8 +77,14 @@ function getHeadless() {
     return capabilityHeadless;
 }
 
+function getAllure() {
+    getProcessArg('allure', setAllure);
+    return capabilityAllure;
+}
+
 module.exports = {
     getBrowser,
     getHeadlessArgs,
-    getHeadless
+    getHeadless,
+    getAllure
 }

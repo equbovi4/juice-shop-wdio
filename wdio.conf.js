@@ -1,4 +1,4 @@
-const {getBrowser, getHeadlessArgs} = require('./arg.helper');
+const {getBrowser, getHeadlessArgs, getAllure} = require('./arg.helper');
 const path = require('path');
 
 exports.config = {
@@ -55,18 +55,16 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: getBrowser(),
-        // browserName:'firefox'
-        'goog:chromeOptions': {
-            args: [].concat(getHeadlessArgs())
-        },
-        'moz:firefoxOptions': {
-            args: [].concat(getHeadlessArgs())
-        }
-    }
-
-       
-],
+            browserName: getBrowser(),
+            // browserName:'firefox'
+            'goog:chromeOptions': {
+                args: [].concat(getHeadlessArgs())
+            },
+            'moz:firefoxOptions': {
+                args: [].concat(getHeadlessArgs())
+            }
+        }       
+    ],
 
     //
     // ===================
@@ -145,7 +143,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: getAllure() ? [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+        useCucumberStepReporter: true,
+        addConsoleLogs: true
+
+    }]] : ['spec'],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -226,7 +231,6 @@ exports.config = {
      * @param {object}         browser      instance of created browser/device session
      */
     before: function (capabilities, specs) {
-        console.log("TEST before hook");
         const CustomCommand = require('./src/support/custom-command');
         new CustomCommand();
     },
@@ -253,7 +257,6 @@ exports.config = {
      * @param {object}                 context  Cucumber World object
      */
     beforeScenario: function (world, context) {
-        console.log("BeforeScenario hook");
         const BasePage = require('./src/pages/common/base.page');
         const LoginPage = require('./src/pages/auth/login.page');
         const RegisterPage = require('./src/pages/auth/register.page');
@@ -305,7 +308,13 @@ exports.config = {
      * @param {object}             context          Cucumber World object
      */
     // afterStep: function (step, scenario, result, context) {
+
     // },
+    afterStep: async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+          await browser.takeScreenshot();
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.
@@ -316,9 +325,9 @@ exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {object}                 context          Cucumber World object
      */
-    afterScenario: function (world, result, context) {
-        console.log("After scenario");
-    },
+    // afterScenario: function (world, result, context) {
+    //     console.log("After scenario");
+    // },
     /**
      *
      * Runs after a Cucumber Feature.
