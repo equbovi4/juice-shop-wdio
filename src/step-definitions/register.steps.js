@@ -27,8 +27,6 @@ Then('I have registered a new user using API', async function() {
     const newEmail = this.user.randomEmail;
     const newPassword = this.user.newPassword;
 
-    console.log(newEmail);
-
     await userApi.createUser(newEmail, newPassword, securityQuestion);
     this.user.email = newEmail;
     this.user.password = newPassword;
