@@ -1,5 +1,5 @@
 const {Before} = require('@wdio/cucumber-framework');
-const {getHeadless} = require('../../arg.helper');
+const {getHeadless} = require('../../config/arg.helper');
 
 Before(async (scenario) => {
     await browser.reloadSession();
