@@ -1,5 +1,6 @@
 const BROWSER_CHROME = "chrome";
 const BROWSER_FIREFOX = "firefox";
+const BROWSER_EDGE = "msedge";
 let capabilityHeadless = false;
 let capabilityAllure = false;
 // Default browser will be chrome
@@ -35,7 +36,8 @@ function setBrowser(browserArgument) {
     // If the value matches valid browser name then return it
     if (
       browserArgument.toLowerCase() === BROWSER_CHROME ||
-      browserArgument.toLowerCase() === BROWSER_FIREFOX
+      browserArgument.toLowerCase() === BROWSER_FIREFOX ||
+      browserArgument.toLowerCase() === BROWSER_EDGE
     ) {
       capabilityBrowser = browserArgument;
     } else {
@@ -68,7 +70,9 @@ function getHeadlessArgs() {
             capabilities = ['-headless'];
         } else if (capabilityBrowser === BROWSER_CHROME) {
             capabilities = ['headless', 'disable-gpu'];
-        }
+        } else if (capabilityBrowser === BROWSER_EDGE) {
+          capabilities = ['--headless'];
+      }
     }
     return capabilities;
 }
