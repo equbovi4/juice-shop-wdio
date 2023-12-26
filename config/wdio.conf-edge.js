@@ -25,7 +25,7 @@ exports.config = merge(baseConfig.config, {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-            browserName: 'firefox',
+            browserName: 'msedge',
             'ms:edgeOptions': {
                 args: [].concat(getHeadlessArgs())
             }
