@@ -20,13 +20,13 @@ pipeline {
             }
         }
 
-        stage('Delete previous reports') {
-            steps {
-                script {
-                    sh "npm run deleteReports"
-                }
-            }
-        }
+        // stage('Delete previous reports') {
+        //     steps {
+        //         script {
+        //             sh "npm run deleteReports"
+        //         }
+        //     }
+        // }
 
         stage("Test Execution") {
             steps {
