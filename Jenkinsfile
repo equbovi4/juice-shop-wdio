@@ -15,6 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
+                    sh 'npm install -g pkg-config'
                     sh "npm install"
                 }
             }
@@ -31,6 +32,7 @@ pipeline {
         stage("Test Execution") {
             steps {
                 script {
+                    sh 'node-pre-gyp install --fallback-to-build --update-binary'
                     def browser = params.BROWSER
                     def scenario = params.SCENARIOS
                     def headless = params.HEADLESS
