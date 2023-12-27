@@ -34,6 +34,10 @@ class RegisterPage extends BasePage{
         return browser.$('//button[@id="registerButton"]');
     }
 
+    get confirmationMessage() {
+        return browser.$('//span[contains(text(), "Registration completed successfully. You can now log in.")]');
+    }
+
     //Methods
     async securityQeustionOption(option) {
         return browser.$(`//span[@class="mat-option-text"][contains(text(),"${option}")]`);

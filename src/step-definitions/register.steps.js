@@ -15,6 +15,7 @@ Then('I register a new account', async function() {
 
     await this.registerPage.securityAnswerInputField.waitAndSetValue(this.user.secAnswer);
     await this.registerPage.registerButton.waitAndClick();
+    await this.registerPage.confirmationMessage.waitToAppearAndDisappear();
 })
 
 Then('I have registered a new user using API', async function() {
