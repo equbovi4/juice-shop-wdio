@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools { nodejs "21.1.0" }
+
     parameters {
         string(name: 'BROWSER', defaultValue: 'chrome', description: 'Browser on which tests will be executed')
         
@@ -13,7 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh "npm i"
+                    sh "npm install"
                 }
             }
         }
