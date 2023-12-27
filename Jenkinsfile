@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    tools { nodejs "21.1.0" }
+    tools { nodejs "16.20.2" }
 
     parameters {
         string(name: 'BROWSER', defaultValue: 'chrome', description: 'Browser on which tests will be executed')

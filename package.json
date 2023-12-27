@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
-    "canvas": "^2.11.2",
     "chromedriver": "^120.0.1",
     "deepmerge": "^4.3.1"
   }
