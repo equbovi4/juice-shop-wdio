@@ -68,3 +68,17 @@ If allure is enabled (--allure='true') then after test exuction run:
 ```
 allure serve
 ```
+
+# Problems
+
+1. I could not setup Jenkins to run my project: i receive error which i do not understand how to fix:
+Error: 
+
+```
+3082 error code 1
+3083 error path /Users/aleksandrsjakubovskis/.jenkins/jobs/wdio1/workspace/node_modules/canvas
+3084 error command failed
+3085 error command sh -c node-pre-gyp install --fallback-to-build --update-binary
+```
+
+Jenkins fails during the ```npm install``` command
