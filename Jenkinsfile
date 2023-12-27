@@ -21,6 +21,7 @@ pipeline {
                 }
             }
         }
+    }
 
         // stage('Delete previous reports') {
         //     steps {
