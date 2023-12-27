@@ -71,7 +71,7 @@ function getHeadlessArgs() {
         } else if (capabilityBrowser === BROWSER_CHROME) {
             capabilities = ['headless', 'disable-gpu'];
         } else if (capabilityBrowser === BROWSER_EDGE) {
-          capabilities = ['--headless'];
+            capabilities = ['--headless'];
       }
     }
     return capabilities;
