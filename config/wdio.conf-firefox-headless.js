@@ -1,4 +1,3 @@
-const { getHeadlessArgs } = require('./arg.helper');
 const merge = require('deepmerge');
 const baseConfig = require('./wdio.conf-base');
 
@@ -27,7 +26,7 @@ exports.config = merge(baseConfig.config, {
     capabilities: [{
             browserName: 'firefox',
             'moz:firefoxOptions': {
-                args: [].concat(getHeadlessArgs())
+                args: ['-headless']
             }
         }
     ]
