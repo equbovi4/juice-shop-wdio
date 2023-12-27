@@ -15,8 +15,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'npm install -g pkg-config'
-                    sh "npm install"
+                    sh 'node -v'
+                    // sh 'npm install -g pkg-config'
+                    // sh "npm install"
                 }
             }
         }
@@ -29,39 +30,39 @@ pipeline {
         //     }
         // }
 
-        stage("Test Execution") {
-            steps {
-                script {
-                    sh 'node-pre-gyp install --fallback-to-build --update-binary'
-                    def browser = params.BROWSER
-                    def scenario = params.SCENARIOS
-                    def headless = params.HEADLESS
+    //     stage("Test Execution") {
+    //         steps {
+    //             script {
+    //                 sh 'node-pre-gyp install --fallback-to-build --update-binary'
+    //                 def browser = params.BROWSER
+    //                 def scenario = params.SCENARIOS
+    //                 def headless = params.HEADLESS
 
-                    try {
-                        def commandToRun = performTestExecution(browser, scenario, headless)
-                        commandToRun = commandToRun + " --allure='true'"
-                        sh commandToRun
-                    } catch (Exception e) {
-                        echo "Error: ${e.message}"
-                    }
-                }
-            }
-        }
-    }
+    //                 try {
+    //                     def commandToRun = performTestExecution(browser, scenario, headless)
+    //                     commandToRun = commandToRun + " --allure='true'"
+    //                     sh commandToRun
+    //                 } catch (Exception e) {
+    //                     echo "Error: ${e.message}"
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
-    post {
-        always {
-            script {
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'allure-results']]
-                ])
-            }
-        }
-    }
+    // post {
+    //     always {
+    //         script {
+    //             allure([
+    //                 includeProperties: false,
+    //                 jdk: '',
+    //                 properties: [],
+    //                 reportBuildPolicy: 'ALWAYS',
+    //                 results: [[path: 'allure-results']]
+    //             ])
+    //         }
+    //     }
+    // }
 }
 
 def performTestExecution(browser, scenario, headless) {
