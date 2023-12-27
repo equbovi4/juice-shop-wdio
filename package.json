@@ -18,12 +18,12 @@
     "wdio-wait-for": "^3.0.7"
   },
   "scripts": {
-    "wdio": "wdio run ./config/wdio.conf.js",
-    "wdio:parallel": "wdio run ./config/wdio.conf-parallel.js",
+    "wdio": "npm run deleteReports & wdio run ./config/wdio.conf.js",
+    "wdio:parallel": "npm run deleteReports & wdio run ./config/wdio.conf-parallel.js",
     "wdio:chrome": "wdio run ./config/wdio.conf-chrome.js",
     "wdio:chrome:headless": "wdio run ./config/wdio.conf-chrome.js --headless='true'",
     "wdio:firefox": "wdio run ./config/wdio.conf-firefox.js",
-    "wdio:firefox:headless": "wdio run ./config/wdio.conf-firefox.js --headless='true'",
+    "wdio:firefox:headless": "wdio run ./config/wdio.conf-firefox-headless.js",
     "wdio:edge": "wdio run ./config/wdio.conf-edge.js",
     "wdio:edge:headless": "wdio run ./config/wdio.conf-edge.js --headless='true'",
     "deleteReports": "del-cli --force ./allure-results/*"

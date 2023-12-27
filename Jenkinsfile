@@ -70,6 +70,6 @@ def performTestExecution(browser, scenario, headless) {
     if (scenario == "All") {        
         return "npm run wdio -- --browser='${browser}' --headless='${headless}'"
     } else {
-        return "npm run wdio -- --cucumberOpts.tagExpression='@${scenario}' --browser='true' --headless='${headless}'"
+        return "npm run wdio -- --cucumberOpts.tagExpression='@${scenario}' --browser='${browser}' --headless='${headless}'"
     }
 }
