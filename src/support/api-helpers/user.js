@@ -17,7 +17,7 @@ class User extends APIBase {
 
         const response = await super.post('/api/Users/', body);
 
-        //return response.data.data;
+        return response.data.data;
     }
 }
 
